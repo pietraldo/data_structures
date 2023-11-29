@@ -16,6 +16,9 @@ public:
 	Heap(int max_size_of_heap=63);
 
 	bool Insert(int value); // true if inserted
+	void upHeap(int index);
+	void downHeap(int index);
+	bool deleteMax();
 
 	~Heap();
 

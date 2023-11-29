@@ -14,8 +14,44 @@ bool Heap::Insert(int value)
 	
 	number_of_elements++;
 	root[number_of_elements] = value;
+	upHeap(number_of_elements);
 	
 	return true;
+}
+
+void Heap::upHeap(int index)
+{
+	while (root[index] > root[index / 2])
+	{
+		int temp = root[index];
+		root[index] = root[index / 2];
+		root[index / 2] = temp;
+		index /= 2;
+	}
+}
+
+bool Heap::deleteMax()
+{
+	if (number_of_elements < 1) return false;
+	root[1] = root[number_of_elements];
+	number_of_elements--;
+	downHeap(1);
+	return true;
+}
+
+void Heap::downHeap(int index)
+{
+	while (true)
+	{
+		int bigger=index*2;
+		if (index * 2 > number_of_elements) return;
+		if (index * 2 + 1 <= number_of_elements && root[index * 2] < root[index * 2 + 1]) bigger = index * 2 + 1;
+		if (root[index] > root[bigger]) return;
+		int temp = root[index];
+		root[index] = root[bigger];
+		root[bigger] = temp;
+		index = bigger;
+	}
 }
 
 Heap::~Heap()
