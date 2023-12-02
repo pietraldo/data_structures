@@ -54,6 +54,25 @@ void Heap::downHeap(int index)
 	}
 }
 
+void Heap::createHeapFromUp(int* arr, int n)
+{
+
+	max_size = n;
+	for (int i = 0; i < n; i++)
+		Insert(arr[i]);
+}
+
+void Heap::createHeapFromDown(int* arr, int n)
+{
+	number_of_elements = n;
+
+	for (int i = 0; i < n; i++)
+		root[i+1] = arr[i];
+	for (int i = n / 2; i >= 1; i--)
+		downHeap(i);
+
+}
+
 Heap::~Heap()
 {
 	delete root;

@@ -19,6 +19,9 @@ public:
 	void upHeap(int index);
 	void downHeap(int index);
 	bool deleteMax();
+	int Max() { return root[1]; };
+	void createHeapFromUp(int* arr,int n);
+	void createHeapFromDown(int* arr, int n);
 
 	~Heap();
 
