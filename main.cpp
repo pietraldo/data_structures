@@ -1,15 +1,53 @@
 #include <iostream>
 #include <chrono>
 #include "heap.h"
+#include "LeftistHeap.h"
+#include "BinomialQueue.h"
 
 void HeapExample();
+void LeftistHeapExample();
+void BinomialQueueExample();
 
 int main()
 {
 	
-	HeapExample();
-	
+	//LeftistHeapExample();
+	BinomialQueueExample();
 	return 0;
+}
+
+void BinomialQueueExample()
+{
+	BinomialQueue lh = BinomialQueue();
+	lh.Insert(3);
+	lh.Insert(5);
+	lh.Insert(1);
+	lh.Insert(9);
+	lh.Insert(2);
+	lh.Insert(10);
+	lh.Insert(4);
+	lh.Insert(7);	
+	while(lh.DeleteMax())
+	cout << lh.Max()<<endl;
+}
+
+void LeftistHeapExample()
+{
+	LeftistHeap lh = LeftistHeap();
+
+	lh.Insert(3);
+	lh.Insert(5);
+	lh.Insert(1);
+	lh.Insert(9);
+	lh.Insert(2);
+	lh.Insert(4);
+	lh.Insert(7);
+
+	lh.Print();
+
+	cout << lh.GetMax()<<endl;
+	lh.DeleteMax();
+	cout << lh.GetMax() << endl;
 }
 
 void HeapExample()
